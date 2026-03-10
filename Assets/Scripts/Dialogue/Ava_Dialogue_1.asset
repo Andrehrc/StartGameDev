@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e659d078c00c5f4697a7a76572834c7, type: 3}
+  m_Name: Ava_Dialogue_1
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSettings
+  actor: {fileID: 9065983279404047286, guid: 18d0e38003d40554e9c2b580fdbe4952, type: 3}
+  speakerStripe: {fileID: 0}
+  sentence: 
+  dialogues:
+  - actorName: 
+    profile: {fileID: -5107520152641879215, guid: 4c3c5495b7f007f488921fffdbfd8935, type: 3}
+    sentence:
+      portugues: "Ol\xE1, querido! Bem vindo a vila."
+      english: Hello, dear! Welcome to the village.
+      espanol: "\xA1Hola, querida! Bienvenido al pueblo. "
+  - actorName: 
+    profile: {fileID: 0}
+    sentence:
+      portugues: "Voc\xEA \xE9 novo por essas bandas, n\xE3o \xE9? "
+      english: You're new around here, aren't you?
+      espanol: "Eres nuevo por aqu\xED \xBFno? "
