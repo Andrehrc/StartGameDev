@@ -7,14 +7,33 @@ public class Player : MonoBehaviour
     public float runSpeed = 9;
     public float rollSpeed = 12f;
 
+    [HideInInspector] public Tools handlingObj;
+    [HideInInspector] public Vector2 lockDirection;
+    [HideInInspector]
+    public Vector2 LookDirection
+    {
+        get
+        {
+            if (_isRolling || _isFishing)
+                return lockDirection;
+
+            return _direction.normalized;
+        }
+    }
+
     float initialSpeed;
     bool _isRunning;
     bool _isRolling;
     bool _isCutting;
+    bool _isDigging;
+    bool _isWatering;
+    bool _isFishing;
 
+    PlayerBag bag;
     Rigidbody2D rig;
     Vector2 _direction;
-    Vector2 rollDirection;
+
+    HudController hud;
 
     public Vector2 direction
     {
@@ -40,18 +59,63 @@ public class Player : MonoBehaviour
         set { _isCutting = value; }
     }
 
+    public bool isDigging
+    {
+        get { return _isDigging; }
+        set { _isDigging = value; }
+    }
+
+    public bool isWatering
+    {
+        get { return _isWatering; }
+        set { _isWatering = value; }
+    }
+
+    public bool IsFishing { get => _isFishing; set => _isFishing = value; }
+
+    private void Awake()
+    {
+        rig = GetComponent<Rigidbody2D>();
+        bag = GetComponent<PlayerBag>();
+        hud = FindFirstObjectByType<HudController>();
+    }
+
     private void Start()
     {
         rig = GetComponent<Rigidbody2D>();
+        bag = GetComponent<PlayerBag>();
         initialSpeed = speed;
+
+        hud.UpdateToolUi((int)handlingObj);
     }
 
     private void Update()
     {
+        if (Keyboard.current.digit1Key.wasPressedThisFrame)
+        {
+            handlingObj = Tools.axe;
+            hud.UpdateToolUi((int)handlingObj);
+        }
+
+        if (Keyboard.current.digit2Key.wasPressedThisFrame)
+        {
+            handlingObj = Tools.shovel;
+            hud.UpdateToolUi((int)handlingObj);
+        }
+
+        if (Keyboard.current.digit3Key.wasPressedThisFrame)
+        {
+            handlingObj = Tools.wateringCan;
+            hud.UpdateToolUi((int)handlingObj);
+        }
+
         OnInput();
         OnRun();
         OnRolling();
         OnCutting();
+        OnDigging();
+        OnWatering();
+        SetCharSpeed();
     }
 
     private void FixedUpdate()
@@ -64,26 +128,38 @@ public class Player : MonoBehaviour
 
     void OnCutting()
     {
-        _isCutting = Keyboard.current.qKey.isPressed;
+        if (handlingObj != Tools.axe)
+            return;
 
-        if (_isCutting)
+        _isCutting = Keyboard.current.qKey.isPressed;
+    }
+
+    void OnDigging()
+    {
+        if (handlingObj != Tools.shovel)
+            return;
+
+        _isDigging = Keyboard.current.qKey.isPressed;
+    }
+
+    void OnWatering()
+    {
+        if (handlingObj != Tools.wateringCan || bag.currentWater <= 0)
+            return;
+
+        _isWatering = Keyboard.current.qKey.isPressed;
+
+        if (_isWatering)
         {
             speed = 0;
+            bag.currentWater -= 0.01f;
+            if (bag.currentWater <= 0)
+            {
+                bag.currentWater = 0;
+                _isWatering = false;
+            }
             return;
         }
-
-        if (_isRolling)
-        {
-            return;
-        }
-
-        if (_isRunning)
-        {
-            speed = runSpeed;
-            return;
-        }
-
-        speed = initialSpeed;
     }
 
     void OnInput()
@@ -99,18 +175,18 @@ public class Player : MonoBehaviour
 
     void OnMove()
     {
-        var moveDir = _isRolling ? rollDirection : _direction.normalized;
+        var moveDir = _direction.normalized;
+
+        if (_isRolling || _isFishing)
+            moveDir = lockDirection;
+
         rig.MovePosition(rig.position + moveDir * speed * Time.fixedDeltaTime);
     }
 
     void OnRun()
     {
-        if (_isRolling) return;
-
-        speed = Keyboard.current.leftShiftKey.isPressed ? runSpeed : initialSpeed;
         _isRunning = Keyboard.current.leftShiftKey.isPressed;
     }
-
 
     void OnRolling()
     {
@@ -121,7 +197,7 @@ public class Player : MonoBehaviour
             if (_direction.sqrMagnitude == 0) return;
 
             _isRolling = true;
-            rollDirection = _direction.normalized;
+            lockDirection = _direction.normalized;
             speed = rollSpeed;
         }
     }
@@ -132,7 +208,36 @@ public class Player : MonoBehaviour
         speed = initialSpeed;
     }
 
+    public void ResetSpeed()
+    {
+        speed = initialSpeed;
+        lockDirection = _direction.normalized;
+    }
+
+    public void SetCharSpeed()
+    {
+        if (_isRolling)
+        {
+            speed = rollSpeed;
+            return;
+        }
+
+        if (_isFishing || _isDigging || _isCutting || _isWatering)
+        {
+            speed = 0;
+            return;
+        }
+
+        speed = _isRunning ? runSpeed : initialSpeed;
+    }
+
     #endregion Movement
 
-
+    public enum Tools
+    {
+        axe,
+        shovel,
+        wateringCan,
+        sword,
+    }
 }

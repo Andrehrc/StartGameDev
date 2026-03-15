@@ -152,12 +152,12 @@ TextureImporter:
       name: spr_reeling_strip13_0
       rect:
         serializedVersion: 2
-        x: 41
-        y: 2
-        width: 39
-        height: 42
+        x: 0
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -174,12 +174,12 @@ TextureImporter:
       name: spr_reeling_strip13_1
       rect:
         serializedVersion: 2
-        x: 136
-        y: 2
-        width: 40
-        height: 42
+        x: 96
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -196,12 +196,12 @@ TextureImporter:
       name: spr_reeling_strip13_2
       rect:
         serializedVersion: 2
-        x: 231
-        y: 2
-        width: 41
-        height: 42
+        x: 192
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -218,12 +218,12 @@ TextureImporter:
       name: spr_reeling_strip13_3
       rect:
         serializedVersion: 2
-        x: 326
-        y: 2
-        width: 42
-        height: 42
+        x: 288
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -240,12 +240,12 @@ TextureImporter:
       name: spr_reeling_strip13_4
       rect:
         serializedVersion: 2
-        x: 422
-        y: 2
-        width: 42
-        height: 42
+        x: 384
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -262,12 +262,12 @@ TextureImporter:
       name: spr_reeling_strip13_5
       rect:
         serializedVersion: 2
-        x: 519
-        y: 2
-        width: 41
-        height: 42
+        x: 480
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -284,12 +284,12 @@ TextureImporter:
       name: spr_reeling_strip13_6
       rect:
         serializedVersion: 2
-        x: 616
-        y: 2
-        width: 40
-        height: 42
+        x: 576
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -306,12 +306,12 @@ TextureImporter:
       name: spr_reeling_strip13_7
       rect:
         serializedVersion: 2
-        x: 713
-        y: 2
-        width: 39
-        height: 41
+        x: 672
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -328,12 +328,12 @@ TextureImporter:
       name: spr_reeling_strip13_8
       rect:
         serializedVersion: 2
-        x: 810
-        y: 2
-        width: 38
-        height: 40
+        x: 768
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -350,12 +350,12 @@ TextureImporter:
       name: spr_reeling_strip13_9
       rect:
         serializedVersion: 2
-        x: 906
-        y: 2
-        width: 38
-        height: 41
+        x: 864
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -372,12 +372,12 @@ TextureImporter:
       name: spr_reeling_strip13_10
       rect:
         serializedVersion: 2
-        x: 1002
-        y: 2
-        width: 38
-        height: 41
+        x: 960
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -394,12 +394,12 @@ TextureImporter:
       name: spr_reeling_strip13_11
       rect:
         serializedVersion: 2
-        x: 1098
-        y: 2
-        width: 38
-        height: 42
+        x: 1056
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -416,12 +416,12 @@ TextureImporter:
       name: spr_reeling_strip13_12
       rect:
         serializedVersion: 2
-        x: 1194
-        y: 2
-        width: 38
-        height: 42
+        x: 1152
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -438,7 +438,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2dda7bcbab6b13c498e3ab3b157b8066
     internalID: 0
     vertices: []
     indices: 
@@ -446,7 +446,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":96.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       spr_reeling_strip13_0: 1533900097129813187
       spr_reeling_strip13_1: 865284487732118567

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Axe
   - Wood
+  - Shovel
+  - Water
+  - Fish
   layers:
   - Default
   - TransparentFX
