@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public bool isPaused;
+
     public float speed = 5;
     public float runSpeed = 9;
     public float rollSpeed = 12f;
@@ -28,6 +30,7 @@ public class Player : MonoBehaviour
     bool _isDigging;
     bool _isWatering;
     bool _isFishing;
+    bool _isAttacking;
 
     PlayerBag bag;
     Rigidbody2D rig;
@@ -72,6 +75,7 @@ public class Player : MonoBehaviour
     }
 
     public bool IsFishing { get => _isFishing; set => _isFishing = value; }
+    public bool IsAttacking { get => _isAttacking; set => _isAttacking = value; }
 
     private void Awake()
     {
@@ -91,31 +95,41 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Keyboard.current.digit1Key.wasPressedThisFrame)
+        if (!isPaused)
         {
-            handlingObj = Tools.axe;
-            hud.UpdateToolUi((int)handlingObj);
-        }
+            if (Keyboard.current.digit1Key.wasPressedThisFrame)
+            {
+                handlingObj = Tools.axe;
+                hud.UpdateToolUi((int)handlingObj);
+            }
 
-        if (Keyboard.current.digit2Key.wasPressedThisFrame)
-        {
-            handlingObj = Tools.shovel;
-            hud.UpdateToolUi((int)handlingObj);
-        }
+            if (Keyboard.current.digit2Key.wasPressedThisFrame)
+            {
+                handlingObj = Tools.shovel;
+                hud.UpdateToolUi((int)handlingObj);
+            }
 
-        if (Keyboard.current.digit3Key.wasPressedThisFrame)
-        {
-            handlingObj = Tools.wateringCan;
-            hud.UpdateToolUi((int)handlingObj);
-        }
+            if (Keyboard.current.digit3Key.wasPressedThisFrame)
+            {
+                handlingObj = Tools.wateringCan;
+                hud.UpdateToolUi((int)handlingObj);
+            }
 
-        OnInput();
-        OnRun();
-        OnRolling();
-        OnCutting();
-        OnDigging();
-        OnWatering();
-        SetCharSpeed();
+            if (Keyboard.current.digit4Key.wasPressedThisFrame)
+            {
+                handlingObj = Tools.sword;
+                hud.UpdateToolUi((int)handlingObj);
+            }
+
+            OnInput();
+            OnRun();
+            OnRolling();
+            OnCutting();
+            OnDigging();
+            OnWatering();
+            OnAttacking();
+            SetCharSpeed();
+        }
     }
 
     private void FixedUpdate()
@@ -222,7 +236,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        if (_isFishing || _isDigging || _isCutting || _isWatering)
+        if (_isFishing || _isDigging || _isCutting || _isWatering || _isAttacking)
         {
             speed = 0;
             return;
@@ -232,6 +246,14 @@ public class Player : MonoBehaviour
     }
 
     #endregion Movement
+
+    void OnAttacking()
+    {
+        if (handlingObj != Tools.sword)
+            return;
+
+        _isAttacking = Keyboard.current.qKey.isPressed;
+    }
 
     public enum Tools
     {

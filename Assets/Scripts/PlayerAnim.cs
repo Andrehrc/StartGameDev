@@ -3,6 +3,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerAnim : MonoBehaviour
 {
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private float radius;
+    [SerializeField] private LayerMask enemyLayer;
+
     private Player player;
     private Animator anim;
     private SpriteRenderer sr;
@@ -10,6 +14,10 @@ public class PlayerAnim : MonoBehaviour
 
     private bool _rollTriggered;
     private bool _fishingTriggered;
+    private bool isHitting;
+
+    private float recoveryTime = 1.5f;
+    private float timeCount;
 
     private void Awake()
     {
@@ -21,10 +29,16 @@ public class PlayerAnim : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     void Update()
+    {
+        OnMove();
+    }
+
+    #region Movement
+    private void OnMove()
     {
         if (player.isRolling)
         {
@@ -65,6 +79,19 @@ public class PlayerAnim : MonoBehaviour
         if (player.isWatering)
             anim.SetInteger("transition", value: 5);
 
+        if (player.IsAttacking)
+            anim.SetInteger("transition", value: 6);
+
+        if (isHitting)
+        {
+            timeCount += Time.deltaTime;
+
+            if (timeCount >= recoveryTime)
+            {
+                isHitting = false;
+                timeCount = 0f;
+            }
+        }
     }
 
     public void OnCastingStarted()
@@ -92,4 +119,44 @@ public class PlayerAnim : MonoBehaviour
         player.ResetSpeed();
     }
 
+    public void OnHammeringStarted()
+    {
+        anim.SetBool("hammering", true);
+    }
+
+    public void OnHammeringEnded()
+    {
+        anim.SetBool("hammering", false);
+
+    }
+
+    public void OnHit()
+    {
+        if (!isHitting)
+        {
+            anim.SetTrigger("hit");
+            isHitting = true;
+        }
+    }
+    #endregion
+
+    #region Attack
+
+    public void OnAttack()
+    {
+        Collider2D hit = Physics2D.OverlapCircle(attackPoint.position, radius, enemyLayer);
+
+        if (hit != null)
+        {
+            Skeleton enemy = hit.GetComponent<Skeleton>();
+            enemy.PlayerAttackHit();
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(attackPoint.position, radius);
+    }
+
+    #endregion
 }
