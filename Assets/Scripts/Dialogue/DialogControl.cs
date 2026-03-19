@@ -26,6 +26,10 @@ public class DialogContol : MonoBehaviour
     bool _isShowing;
     int index;
     private string[] sentences;
+    private string[] actorName;
+    private Sprite[] actorProfile;
+
+    private Player player;
 
     public static DialogContol instance;
 
@@ -34,6 +38,7 @@ public class DialogContol : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        player = FindFirstObjectByType<Player>();
     }
 
     IEnumerator TypeSentence()
@@ -53,6 +58,8 @@ public class DialogContol : MonoBehaviour
             {
                 index++;
                 speechText.text = string.Empty;
+                profileSprite.sprite = actorProfile[index];
+                actorNameText.text = actorName[index];
                 StartCoroutine(TypeSentence());
             }
             else
@@ -62,7 +69,7 @@ public class DialogContol : MonoBehaviour
         }
     }
 
-    public void Speech(string[] txt)
+    public void Speech(string[] txt, string[] names, Sprite[] sprites)
     {
         if (_isShowing)
         {
@@ -70,14 +77,20 @@ public class DialogContol : MonoBehaviour
             return;
         }
 
+        player.isPaused = true;
         dialogueObg.SetActive(true);
         sentences = txt;
+        actorName = names;
+        actorProfile = sprites;
+        profileSprite.sprite = actorProfile[index];
+        actorNameText.text = actorName[index];
         StartCoroutine(TypeSentence());
         _isShowing = true;
     }
 
     public void CloseWindow()
     {
+        player.isPaused = false;
         dialogueObg.SetActive(false);
         _isShowing = false;
         speechText.text = string.Empty;

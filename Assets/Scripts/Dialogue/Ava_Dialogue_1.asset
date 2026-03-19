@@ -16,14 +16,20 @@ MonoBehaviour:
   speakerStripe: {fileID: 0}
   sentence: 
   dialogues:
-  - actorName: 
-    profile: {fileID: -5107520152641879215, guid: 4c3c5495b7f007f488921fffdbfd8935, type: 3}
+  - actorName: Ava
+    profile: {fileID: -1940738496428130850, guid: 507ddeadcf05c3b46bc5c8d5f49468f5, type: 3}
     sentence:
       portugues: "Ol\xE1, querido! Bem vindo a vila."
       english: Hello, dear! Welcome to the village.
       espanol: "\xA1Hola, querida! Bienvenido al pueblo. "
-  - actorName: 
-    profile: {fileID: 0}
+  - actorName: "Her\xF3i"
+    profile: {fileID: -4030792056451597264, guid: c7e7b1a04cfbba44eaa847ce1ce4dd33, type: 3}
+    sentence:
+      portugues: "N\xE3o vou ficar muito tempo aqui, mas agrade\xE7o."
+      english: 'I won''t be here long, but thank you. '
+      espanol: "No estar\xE9 aqu\xED mucho tiempo, pero gracias."
+  - actorName: Ava
+    profile: {fileID: -1940738496428130850, guid: 507ddeadcf05c3b46bc5c8d5f49468f5, type: 3}
     sentence:
       portugues: "Voc\xEA \xE9 novo por essas bandas, n\xE3o \xE9? "
       english: You're new around here, aren't you?

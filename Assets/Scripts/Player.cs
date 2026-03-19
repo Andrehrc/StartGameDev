@@ -143,7 +143,10 @@ public class Player : MonoBehaviour
     void OnCutting()
     {
         if (handlingObj != Tools.axe)
+        {
+            _isCutting = false;
             return;
+        }
 
         _isCutting = Keyboard.current.qKey.isPressed;
     }
@@ -151,7 +154,10 @@ public class Player : MonoBehaviour
     void OnDigging()
     {
         if (handlingObj != Tools.shovel)
+        {
+            _isDigging = false;
             return;
+        }
 
         _isDigging = Keyboard.current.qKey.isPressed;
     }
@@ -159,7 +165,10 @@ public class Player : MonoBehaviour
     void OnWatering()
     {
         if (handlingObj != Tools.wateringCan || bag.currentWater <= 0)
+        {
+            _isWatering = false;
             return;
+        }
 
         _isWatering = Keyboard.current.qKey.isPressed;
 
@@ -250,7 +259,10 @@ public class Player : MonoBehaviour
     void OnAttacking()
     {
         if (handlingObj != Tools.sword)
+        {
+            _isAttacking = false;
             return;
+        }
 
         _isAttacking = Keyboard.current.qKey.isPressed;
     }

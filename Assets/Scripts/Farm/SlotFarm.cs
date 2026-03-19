@@ -1,11 +1,17 @@
+using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class SlotFarm : MonoBehaviour
 {
-    [Header("Components")]
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip holeSFX;
+    [SerializeField] private AudioClip carrotSFX;
 
+
+    [Header("Components")]
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite hole;
     [SerializeField] private Sprite carrot;
@@ -20,6 +26,8 @@ public class SlotFarm : MonoBehaviour
     private float currentWater;
 
     private bool dugHole;
+    private bool plantedCarrot;
+    private bool playerDetected;
 
     PlayerBag bag;
 
@@ -36,16 +44,21 @@ public class SlotFarm : MonoBehaviour
             if (detecting)
                 currentWater += 0.01f;
 
-            if (currentWater >= waterAmount)
+            if (currentWater >= waterAmount && !plantedCarrot)
             {
                 spriteRenderer.sprite = carrot;
+                plantedCarrot = true;
+                audioSource.PlayOneShot(holeSFX);
+            }
 
-                if (Keyboard.current.eKey.wasPressedThisFrame)
-                {
-                    spriteRenderer.sprite = hole;
-                    bag.carrots++;
-                    currentWater = 0;
-                }
+            if (Keyboard.current.eKey.wasPressedThisFrame && plantedCarrot && playerDetected)
+            {
+                audioSource.PlayOneShot(carrotSFX);
+
+                spriteRenderer.sprite = hole;
+                bag.carrots++;
+                currentWater = 0;
+                plantedCarrot = false;
             }
         }
     }
@@ -58,6 +71,7 @@ public class SlotFarm : MonoBehaviour
         {
             spriteRenderer.sprite = hole;
             dugHole = true;
+            audioSource.PlayOneShot(holeSFX);
         }
     }
 
@@ -68,11 +82,17 @@ public class SlotFarm : MonoBehaviour
 
         if (collision.CompareTag("Water"))
             detecting = true;
+
+        if (collision.CompareTag("Player"))
+            playerDetected = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Water"))
             detecting = false;
+
+        if (collision.CompareTag("Player"))
+            playerDetected = false;
     }
 }

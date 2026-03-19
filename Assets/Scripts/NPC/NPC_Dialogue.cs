@@ -15,6 +15,8 @@ public class NPC_Dialogue : MonoBehaviour
     private NPC npc;
 
     private List<string> sentences = new List<string>();
+    private List<string> actorName = new List<string>();
+    private List<Sprite> actorSprite = new List<Sprite>();
 
     void Start()
     {
@@ -27,7 +29,7 @@ public class NPC_Dialogue : MonoBehaviour
         if (Keyboard.current.eKey.wasPressedThisFrame && playerHit)
         {
             npc.LookAtPlayer(playerTransform);
-            DialogContol.instance.Speech(sentences.ToArray());
+            DialogContol.instance.Speech(sentences.ToArray(), actorName.ToArray(), actorSprite.ToArray());
         }
     }
 
@@ -77,7 +79,9 @@ public class NPC_Dialogue : MonoBehaviour
                     break;
             }
 
+            actorName.Add(dialogue.dialogues[i].actorName);
 
+            actorSprite.Add(dialogue.dialogues[i].profile);
         }
     }
 }
