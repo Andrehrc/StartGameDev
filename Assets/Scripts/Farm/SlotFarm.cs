@@ -42,7 +42,7 @@ public class SlotFarm : MonoBehaviour
         if (dugHole)
         {
             if (detecting)
-                currentWater += 0.01f;
+                currentWater += 3.0f * Time.deltaTime;
 
             if (currentWater >= waterAmount && !plantedCarrot)
             {

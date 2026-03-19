@@ -190,8 +190,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 8454418557724666608}
   hole: {fileID: 875252652, guid: 10dd2abd6d29a7948989280702dd7696, type: 3}
   carrot: {fileID: 241768696, guid: 10dd2abd6d29a7948989280702dd7696, type: 3}
-  digAmount: 4
-  waterAmount: 20
+  digAmount: 3
+  waterAmount: 10
   detecting: 0
 --- !u!82 &5054346993856796921
 AudioSource:

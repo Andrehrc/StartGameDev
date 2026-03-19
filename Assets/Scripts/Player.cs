@@ -175,7 +175,7 @@ public class Player : MonoBehaviour
         if (_isWatering)
         {
             speed = 0;
-            bag.currentWater -= 0.01f;
+            bag.currentWater -= 3.0f * Time.deltaTime;
             if (bag.currentWater <= 0)
             {
                 bag.currentWater = 0;
