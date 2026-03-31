@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class Casting : MonoBehaviour
 {
+    public GameObject actionButton;
+
     private bool detectingPlayer;
     [SerializeField] private int percentage;
     [SerializeField] private GameObject fishPrefab;
@@ -43,12 +45,18 @@ public class Casting : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
+        {
             detectingPlayer = true;
+            actionButton.SetActive(value: true);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
+        {
             detectingPlayer = false;
+            actionButton.SetActive(value: false);
+        }
     }
 }

@@ -9,7 +9,11 @@ public class AudioControl : MonoBehaviour
     void Start()
     {
         audioManager = FindFirstObjectByType<AudioManager>();
-        audioManager.PlayBGM(bgmMusic);
     }
 
+    public void StartBgmMusic()
+    {
+        audioManager.PlayBGM(bgmMusic);
+
+    }
 }

@@ -2,17 +2,17 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
+public enum Idiom
+{
+    pt,
+    eng,
+    esp
+}
+
 public class DialogContol : MonoBehaviour
 {
-    [System.Serializable]
-    public enum idiom
-    {
-        pt,
-        eng,
-        esp
-    }
-
-    public idiom language;
+    public Idiom language;
 
     [Header("Components")]
     public GameObject dialogueObg;

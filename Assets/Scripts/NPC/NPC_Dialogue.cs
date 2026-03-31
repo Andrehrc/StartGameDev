@@ -9,6 +9,7 @@ public class NPC_Dialogue : MonoBehaviour
     public LayerMask playerLayer;
 
     public DialogueSettings dialogue;
+    public GameObject actionButton;
 
     bool playerHit;
     private Transform playerTransform;
@@ -20,7 +21,6 @@ public class NPC_Dialogue : MonoBehaviour
 
     void Start()
     {
-        GetSpeechTexts();
         npc = GetComponent<NPC>();
     }
 
@@ -28,6 +28,10 @@ public class NPC_Dialogue : MonoBehaviour
     {
         if (Keyboard.current.eKey.wasPressedThisFrame && playerHit)
         {
+            if (sentences.Count == 0)
+                GetSpeechTexts();
+
+            actionButton.SetActive(value: false);
             npc.LookAtPlayer(playerTransform);
             DialogContol.instance.Speech(sentences.ToArray(), actorName.ToArray(), actorSprite.ToArray());
         }
@@ -46,11 +50,15 @@ public class NPC_Dialogue : MonoBehaviour
         {
             playerHit = true;
             playerTransform = hit.transform;
+
+            if (!DialogContol.instance.IsShowing)
+                actionButton.SetActive(value: true);
         }
-        else
+        else if (playerHit)
         {
             playerHit = false;
             playerTransform = null;
+            actionButton.SetActive(false);
             DialogContol.instance.CloseWindow();
         }
     }
@@ -66,15 +74,15 @@ public class NPC_Dialogue : MonoBehaviour
         {
             switch (DialogContol.instance.language)
             {
-                case DialogContol.idiom.pt:
+                case Idiom.pt:
                     sentences.Add(dialogue.dialogues[i].sentence.portugues);
                     break;
 
-                case DialogContol.idiom.eng:
+                case Idiom.eng:
                     sentences.Add(dialogue.dialogues[i].sentence.english);
                     break;
 
-                case DialogContol.idiom.esp:
+                case Idiom.esp:
                     sentences.Add(dialogue.dialogues[i].sentence.espanol);
                     break;
             }

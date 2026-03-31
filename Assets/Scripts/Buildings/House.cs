@@ -21,6 +21,7 @@ public class House : MonoBehaviour
     private bool detectingPlayer;
     private float timeCount;
     private bool underConstruction;
+    private bool finished;
 
     private void Awake()
     {
@@ -32,6 +33,15 @@ public class House : MonoBehaviour
 
     void Update()
     {
+        if (detectingPlayer && bag.totalWood >= woodAmount && !underConstruction && !finished)
+        {
+            houseSprite.color = startColor;
+        }
+        else if(!underConstruction && !finished)
+        {
+            houseSprite.color = new Color(0, 0, 0, 0);
+        }
+
         if (detectingPlayer && Keyboard.current.eKey.wasPressedThisFrame && bag.totalWood >= woodAmount)
         {
             underConstruction = true;
@@ -52,6 +62,8 @@ public class House : MonoBehaviour
                 houseSprite.color = endColor;
                 player.isPaused = false;
                 colider.SetActive(true);
+                finished = true;
+                underConstruction = false;
             }
         }
     }

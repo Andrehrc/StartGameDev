@@ -19,18 +19,49 @@ MonoBehaviour:
   - actorName: Ava
     profile: {fileID: -1940738496428130850, guid: 507ddeadcf05c3b46bc5c8d5f49468f5, type: 3}
     sentence:
-      portugues: "Ol\xE1, querido! Bem vindo a vila."
-      english: Hello, dear! Welcome to the village.
-      espanol: "\xA1Hola, querida! Bienvenido al pueblo. "
-  - actorName: "Her\xF3i"
-    profile: {fileID: -4030792056451597264, guid: c7e7b1a04cfbba44eaa847ce1ce4dd33, type: 3}
-    sentence:
-      portugues: "N\xE3o vou ficar muito tempo aqui, mas agrade\xE7o."
-      english: 'I won''t be here long, but thank you. '
-      espanol: "No estar\xE9 aqu\xED mucho tiempo, pero gracias."
+      portugues: "Ol\xE1, querido! Bem vindo a vila. Meu Nome \xE9 Ava"
+      english: ' Hello, dear! Welcome to the village. My name is Ava.'
+      espanol: " \xA1Hola, querida! Bienvenida al pueblo. Me llamo Ava."
   - actorName: Ava
     profile: {fileID: -1940738496428130850, guid: 507ddeadcf05c3b46bc5c8d5f49468f5, type: 3}
     sentence:
-      portugues: "Voc\xEA \xE9 novo por essas bandas, n\xE3o \xE9? "
-      english: You're new around here, aren't you?
-      espanol: "Eres nuevo por aqu\xED \xBFno? "
+      portugues: "Voc\xEA pode coletar madeiras no bosque acima. Tamb\xE9m pode plantar
+        cenouras em nossa fazenda a oeste, mas n\xE3o se esque\xE7a de pegar agua
+        para regar a planta\xE7\xE3o."
+      english: 'You can collect wood in the woods above. You can also plant carrots
+        on our farm to the west, but don''t forget to get water to irrigate the plants. '
+      espanol: "Puedes recoger madera en el bosque de arriba. Tambi\xE9n puedes plantar
+        zanahorias en nuestra granja al oeste, pero no olvides conseguir agua para
+        regarlas. "
+  - actorName: Ava
+    profile: {fileID: -1940738496428130850, guid: 507ddeadcf05c3b46bc5c8d5f49468f5, type: 3}
+    sentence:
+      portugues: "Para utilizar suas ferramentas, utilize a tecla Q, e para rolar,
+        utilize o bot\xE3o direito do mouse. Ap\xF3s coletar madeira, voc\xEA pode
+        construir uma casa no local abaixo de n\xF3s."
+      english: ' To use your tools, press the Q key, and to scroll, use the right
+        mouse button. After collecting wood, you can build a house in the area below
+        us.'
+      espanol: " Para usar tus herramientas, pulsa la tecla Q, y para desplazarte,
+        usa el bot\xF3n derecho del rat\xF3n. Tras recoger madera, podr\xE1s construir
+        una casa en la zona que hay debajo."
+  - actorName: Ava
+    profile: {fileID: -1940738496428130850, guid: 507ddeadcf05c3b46bc5c8d5f49468f5, type: 3}
+    sentence:
+      portugues: "Sua tecla de a\xE7\xE3o \xE9 sempre a tecla E, e voc\xEA pode usar
+        o Shift para correr."
+      english: 'Your action key is always the E key, and you can use Shift to run. '
+      espanol: "La tecla de acci\xF3n siempre es la tecla E, y puedes usar Shift
+        para correr. "
+  - actorName: Ava
+    profile: {fileID: -1940738496428130850, guid: 507ddeadcf05c3b46bc5c8d5f49468f5, type: 3}
+    sentence:
+      portugues: "Ah, e como ultima dica, voc\xEA pode pescar na parte de cima do
+        nosso lago. E cuidado com o cemit\xE9rio da vila a sudeste, ele foi tomado
+        por esqueletos recentemente."
+      english: 'Oh, and as a final tip, you can fish on the upper part of our lake.
+        And be careful of the village cemetery to the southeast; it''s been taken
+        over by skeletons recently. '
+      espanol: "Ah, y como \xFAltimo consejo, pueden pescar en la parte alta de nuestro
+        lago. Y tengan cuidado con el cementerio del pueblo, al sureste; \xFAltimamente
+        est\xE1 lleno de esqueletos. "

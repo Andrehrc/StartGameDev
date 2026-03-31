@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class Water : MonoBehaviour
 {
+    public GameObject actionButton;
+
     [SerializeField] private bool detectingPlayer;
 
     private PlayerBag player;
@@ -25,12 +27,18 @@ public class Water : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
+        {
             detectingPlayer = true;
+            actionButton.SetActive(value: true);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
+        {
             detectingPlayer = false;
+            actionButton.SetActive(value: false);
+        }
     }
 }
